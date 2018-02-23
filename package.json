@@ -1,0 +1,8 @@
+{
+  "name": "react-simple-boilerplate",
+  "version": "1.0.0",
+  "description": "A lightweight starter project for react",
+  "main": "index.js",
+  "author": "Andrew",
+  "license": "MIT"
+}
