@@ -1,7 +1,18 @@
 const path = require('path')
+const webpack = require('webpack')
+
+const DEVELOPMENT = process.env.NODE_ENV === 'development'
+
+const entry = DEVELOPMENT
+  ? [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client',
+      path.resolve(__dirname, 'src/index.js'),
+    ]
+  : path.resolve(__dirname, 'src/index.js')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry,
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
@@ -16,4 +27,5 @@ module.exports = {
       },
     ],
   },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 }
