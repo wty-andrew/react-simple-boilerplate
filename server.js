@@ -8,6 +8,7 @@ const webpackConfig = require('./webpack.config')
 const app = express()
 
 const DEVELOPMENT = process.env.NODE_ENV === 'development'
+const PRODUCTION = process.env.NODE_ENV === 'production'
 
 if (DEVELOPMENT) {
   const compiler = webpack(webpackConfig)
@@ -18,11 +19,16 @@ if (DEVELOPMENT) {
     })
   )
   app.use(webpackHotMiddleware(compiler))
+} else {
+  app.use(express.static(path.join(__dirname, './public')))
 }
 
-app.use(express.static(path.join(__dirname, 'public')))
+const htmlPath = PRODUCTION
+  ? path.join(__dirname, './public/index.html')
+  : path.join(__dirname, './src/index.html')
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'))
+  res.sendFile(htmlPath)
 })
 
 const PORT = process.env.PORT || 3000
