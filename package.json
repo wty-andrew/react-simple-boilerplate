@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "dev": "webpack -w",
+    "dev": "cross-env NODE_ENV=development node server.js",
     "build": "webpack -p",
     "lint": "eslint src"
   },
@@ -23,11 +23,13 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.1.3",
     "eslint": "^4.18.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "prettier": "^1.10.2",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.6"
   }
 }
