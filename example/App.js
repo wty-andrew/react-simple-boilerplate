@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import MyComponent from '../src/MyComponent'
+
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>React Simple Boilerplate</h1>
+        <MyComponent />
       </div>
     )
   }

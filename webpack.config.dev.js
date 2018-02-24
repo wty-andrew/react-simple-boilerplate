@@ -1,20 +1,24 @@
 const path = require('path')
 const webpack = require('webpack')
-const merge = require('webpack-merge')
 
-const baseConfig = require('./webpack.config.base')
-
-module.exports = merge(baseConfig, {
+module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    path.join(__dirname, '../src/index.js'),
+    path.join(__dirname, './example/index.js'),
   ],
   output: {
+    path: path.join(__dirname, './demo'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
+      {
+        test: /\.jsx?$/,
+        use: ['babel-loader'],
+        exclude: /node_modules/,
+      },
       {
         test: /(\.css|\.scss)$/,
         use: [
@@ -25,6 +29,9 @@ module.exports = merge(baseConfig, {
       },
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   devtool: 'eval-source-map',
-})
+}
