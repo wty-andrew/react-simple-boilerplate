@@ -12,7 +12,7 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = merge(baseConfig, {
   entry: {
-    bundle: path.join(__dirname, '../src/index.js'),
+    bundle: path.join(__dirname, '../../src/index.js'),
     vendor: ['react', 'react-dom'],
   },
   output: {
@@ -31,7 +31,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     extractSass,
     new HTMLWebpackPlugin({
-      template: path.join(__dirname, '../src/assets/index.html'),
+      template: path.join(__dirname, '../../src/assets/index.html'),
       filname: 'index.html',
     }),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
