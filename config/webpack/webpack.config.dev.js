@@ -16,15 +16,16 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /(\.css|\.scss)$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' },
+          'style-loader',
+          'css-loader',
+          'sass-loader',
         ],
       },
     ],
   },
+  mode: 'development',
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devtool: 'eval-source-map',
 })
