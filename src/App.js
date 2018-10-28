@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { hot } from 'react-hot-loader'
 
 import Home from './containers/Home'
 import About from './containers/About'
@@ -21,4 +22,4 @@ export const App = () => {
   )
 }
 
-export default App
+export default hot(module)(App)
