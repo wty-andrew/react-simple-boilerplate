@@ -2,8 +2,20 @@
 
 exports[`<App /> should render correctly 1`] = `
 <div>
-  <h1>
-    React Simple Boilerplate
-  </h1>
+  <Header />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/about"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
 </div>
 `;
