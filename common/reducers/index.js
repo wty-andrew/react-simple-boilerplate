@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux'
+import { connectRouter } from 'connected-react-router'
 
 import globalReducer from './global/globalReducer'
 
-const rootReducer = combineReducers({
-  global: globalReducer,
-})
+const createRootReducer = history =>
+  combineReducers({
+    global: globalReducer,
+    router: connectRouter(history),
+  })
 
-export default rootReducer
+export default createRootReducer
