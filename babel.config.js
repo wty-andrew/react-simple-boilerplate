@@ -7,6 +7,7 @@ module.exports = {
   },
   plugins: [
     'react-hot-loader/babel',
+    '@babel/plugin-proposal-class-properties',
     [
       'module-resolver',
       {
