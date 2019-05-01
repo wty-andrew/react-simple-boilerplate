@@ -1,4 +1,4 @@
-import { createBrowserHistory } from 'history'
+import { createMemoryHistory } from 'history'
 import { routerMiddleware } from 'connected-react-router'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProductio
 
 import createRootReducer from '../reducers'
 
-export const history = createBrowserHistory()
+export const history = createMemoryHistory()
 const middleware = [thunk, routerMiddleware(history)]
 
 const options = {}
