@@ -1,8 +1,8 @@
 {
-  "name": "react-simple-boilerplate",
+  "name": "electron-app",
   "version": "1.0.0",
-  "description": "A lightweight starter project for react",
-  "main": "index.js",
+  "description": "A lightweight starter project for react electron",
+  "main": "./main/index.js",
   "author": "Andrew",
   "license": "MIT",
   "scripts": {
@@ -14,11 +14,12 @@
     "lint": "eslint src",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js",
     "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test -- --coverage",
+    "package-linux": "electron-packager . electron-app --platform=linux --arch=x64 --out dist/ --overwrite --prune=true",
+    "deb64": "electron-installer-debian  --src dist/electron-app-linux-x64/ --dest dist/installers/ --arch amd64"
   },
   "dependencies": {
     "connected-react-router": "^6.3.2",
-    "electron": "^4.1.4",
     "express": "^4.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -42,6 +43,9 @@
     "babel-polyfill": "^6.26.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
+    "electron": "^5.0.1",
+    "electron-installer-debian": "^2.0.0",
+    "electron-packager": "^14.0.4",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",

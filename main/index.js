@@ -49,7 +49,9 @@ const menuTemplate = [
   },
   {
     label: 'View',
-    submenu: [{ role: 'reload' }, { role: 'toggledevtools' }],
+    submenu: DEVELOPMENT
+      ? [{ role: 'reload' }, { role: 'toggledevtools' }]
+      : [{ role: 'reload' }],
   },
 ]
 
