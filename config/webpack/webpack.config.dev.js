@@ -24,4 +24,9 @@ module.exports = merge(baseConfig, {
   mode: 'development',
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devtool: 'eval-source-map',
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
+  },
 })
