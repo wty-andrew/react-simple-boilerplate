@@ -1,32 +1,30 @@
 const path = require('path')
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const merge = require('webpack-merge')
 
-const extractSass = new ExtractTextPlugin({
-  filename: 'css/style.css',
-})
+const baseConfig = require('./webpack.config.base')
 
-module.exports = {
+module.exports = merge(baseConfig, {
   entry: path.join(__dirname, './example/index.js'),
   output: {
     path: path.join(__dirname, './demo'),
-    publicPath: '/',
     filename: 'js/bundle.js',
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: ['babel-loader'],
-        exclude: /node_modules/,
-      },
-      {
-        test: /(\.css|\.scss)$/,
-        use: extractSass.extract({
-          use: ['css-loader', 'sass-loader'],
-        }),
+        test: /\.(sa|sc|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
-  plugins: [new webpack.EnvironmentPlugin(['NODE_ENV']), extractSass],
-}
+  mode: 'production',
+  plugins: [
+    new MiniCssExtractPlugin({ filename: 'css/style.css' }),
+    new HTMLWebpackPlugin({
+      template: path.join(__dirname, './example/assets/index.html'),
+      filename: 'index.html',
+    }),
+  ],
+})
