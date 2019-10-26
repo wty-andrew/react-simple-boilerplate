@@ -19,8 +19,9 @@ module.exports = {
     'no-console': "warn"
   },
   env: {
-    'browser': true,
-    'node': true,
-    'es6': true
+    browser: true,
+    node: true,
+    es6: true,
+    jest: true,
   },
 }
