@@ -1,7 +1,7 @@
 {
-  "name": "react-simple-boilerplate",
+  "name": "react-three-boilerplate",
   "version": "1.0.0",
-  "description": "A lightweight starter project for react",
+  "description": "A lightweight starter project for react and threejs (using react-three-fiber)",
   "main": "index.js",
   "author": "Andrew",
   "license": "MIT",
@@ -22,9 +22,11 @@
     "react-redux": "^7.1.1",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-three-fiber": "^3.0.7",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "three": "^0.109.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

@@ -1,25 +1,39 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, { useRef } from 'react'
+import {
+  Canvas,
+  useThree,
+  useFrame,
+  extend,
+  useRender,
+} from 'react-three-fiber'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { hot } from 'react-hot-loader'
 
-import Home from './containers/Home'
-import About from './containers/About'
-import NotFoundPage from './containers/NotFoundPage'
+extend({ OrbitControls })
 
-import Header from './components/Header'
+const Controls = props => {
+  const { gl, camera } = useThree()
+  const ref = useRef()
+  useRender(() => ref.current.update())
+  return <orbitControls ref={ref} args={[camera, gl.domElement]} {...props} />
+}
 
-export const App = () => {
+const Cube = () => {
+  const ref = useRef()
+  useFrame(() => (ref.current.rotation.x = ref.current.rotation.y += 0.01))
   return (
-    <div>
-      <Header />
-
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
+    <mesh ref={ref}>
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <meshNormalMaterial attach="material" />
+    </mesh>
   )
 }
+
+export const App = () => (
+  <Canvas>
+    <Cube />
+    <Controls />
+  </Canvas>
+)
 
 export default hot(module)(App)
