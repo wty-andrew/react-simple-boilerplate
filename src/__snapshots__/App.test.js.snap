@@ -1,21 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> should render correctly 1`] = `
-<div>
-  <Header />
-  <Switch>
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/"
-    />
-    <Route
-      component={[Function]}
-      path="/about"
-    />
-    <Route
-      component={[Function]}
-    />
-  </Switch>
-</div>
+exports[`Full app rendering should renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <header>
+      <nav
+        style="text-align: center;"
+      >
+        <a
+          href="/"
+          style="padding: 10px;"
+        >
+          Home
+        </a>
+        <a
+          href="/about"
+          style="padding: 10px;"
+        >
+          About
+        </a>
+      </nav>
+    </header>
+    <div>
+      You are home
+    </div>
+  </div>
+</DocumentFragment>
 `;

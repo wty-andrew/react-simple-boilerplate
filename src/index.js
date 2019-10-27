@@ -6,11 +6,10 @@ import { ConnectedRouter } from 'connected-react-router'
 import { AppContainer } from 'react-hot-loader'
 
 import './assets/styles/main.scss'
-import { configureStore, history } from '../common/store'
+import { history, initialState, configureStore } from '../common/store'
 import App from './App'
 
-const initialState = {}
-const store = configureStore(initialState)
+const store = configureStore(initialState, history)
 
 render(
   <AppContainer>

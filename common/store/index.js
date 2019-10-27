@@ -12,7 +12,12 @@ const middleware = [thunk, routerMiddleware(history)]
 const options = {}
 const composeEnhancers = composeWithDevTools(options)
 
-export const configureStore = (initialState = {}) => {
+export const initialState = {}
+
+export const configureStore = (
+  initialState = initialState,
+  history = history
+) => {
   const store = createStore(
     createRootReducer(history),
     initialState,
