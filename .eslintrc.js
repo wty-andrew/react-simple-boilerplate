@@ -1,6 +1,11 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
   plugins: ['react', 'prettier'],
   settings: {
     react: {
@@ -9,14 +14,14 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': [
-      "error",
+      'error',
       {
-        'singleQuote': true,
-        'trailingComma': "es5",
-        'semi': false,
-      }
+        singleQuote: true,
+        trailingComma: 'es5',
+        semi: false,
+      },
     ],
-    'no-console': "warn"
+    'no-console': 'warn',
   },
   env: {
     browser: true,

@@ -1,14 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 
 const baseConfig = require('./webpack.config.base')
 
 module.exports = merge(baseConfig, {
+  mode: 'development',
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
-    path.join(__dirname, './example/index.js'),
+    path.join(__dirname, '../../example/index.js'),
   ],
   output: {
     filename: 'bundle.js',
@@ -16,17 +16,23 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
-  mode: 'development',
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devtool: 'eval-source-map',
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
+  },
+  devServer: {
+    contentBase: path.join(__dirname, '../../example'),
+    port: 3000,
+    hot: true,
+    open: true,
+    overlay: true,
   },
 })

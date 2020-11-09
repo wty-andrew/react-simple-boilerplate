@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import './MyComponent.scss'
-
-export class MyComponent extends Component {
-  render() {
-    return <div>MyComponent</div>
-  }
+const MyComponent = () => {
+  return <div>MyComponent</div>
 }
 
 export default MyComponent
