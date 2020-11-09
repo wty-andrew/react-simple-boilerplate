@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { AppContainer } from 'react-hot-loader'
 
-import './assets/styles/main.scss'
+import './assets/styles/main.css'
 import { history, initialState, configureStore } from '../common/store'
 import App from './App'
 
