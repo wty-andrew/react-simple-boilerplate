@@ -3,9 +3,10 @@ yarn.lock
 .eslintignore
 .eslintrc.js
 babel.config.js
-webpack.*
+webpack.config.js
+jest.config.js
 *.log
-server.js
-demo
+config
+public
 example
 src

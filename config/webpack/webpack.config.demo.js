@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
   mode: 'production',
   entry: path.join(__dirname, '../../example/index.js'),
   output: {
-    path: path.join(__dirname, '../../demo'),
+    path: path.join(__dirname, '../../public'),
     filename: 'js/bundle.js',
   },
   module: {
@@ -23,7 +23,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new MiniCssExtractPlugin({ filename: 'css/style.css' }),
     new HTMLWebpackPlugin({
-      template: path.join(__dirname, '../../example/assets/index.html'),
+      template: path.join(__dirname, '../../example/index.html'),
       filename: 'index.html',
     }),
   ],

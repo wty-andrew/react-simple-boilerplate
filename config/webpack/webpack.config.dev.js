@@ -1,15 +1,13 @@
 const path = require('path')
-const webpack = require('webpack')
 const { merge } = require('webpack-merge')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 const baseConfig = require('./webpack.config.base')
 
 module.exports = merge(baseConfig, {
   mode: 'development',
-  entry: [
-    'react-hot-loader/patch',
-    path.join(__dirname, '../../example/index.js'),
-  ],
+  entry: path.join(__dirname, '../../example/index.js'),
   output: {
     filename: 'bundle.js',
   },
@@ -21,15 +19,15 @@ module.exports = merge(baseConfig, {
       },
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new ReactRefreshPlugin(),
+    new HTMLWebpackPlugin({
+      template: path.join(__dirname, '../../example/index.html'),
+      filename: 'index.html',
+    }),
+  ],
   devtool: 'eval-source-map',
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
-  },
   devServer: {
-    contentBase: path.join(__dirname, '../../example'),
     port: 3000,
     hot: true,
     open: true,
