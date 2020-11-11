@@ -1,5 +1,10 @@
-const electron = require('electron')
 const path = require('path')
+const electron = require('electron')
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} = require('electron-devtools-installer')
 
 const { app, BrowserWindow, Menu } = electron
 
@@ -7,7 +12,7 @@ const DEVELOPMENT = process.env.NODE_ENV === 'development'
 
 const startUrl = DEVELOPMENT
   ? 'http://localhost:3000'
-  : `file://${path.join(__dirname, '../public/index.html')}`
+  : `file://${path.join(__dirname, '../build/index.html')}`
 
 let mainWindow
 
@@ -55,4 +60,8 @@ const menuTemplate = [
   },
 ]
 
-app.on('ready', createWindow)
+app.on('ready', async () => {
+  if (DEVELOPMENT)
+    await installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS])
+  createWindow()
+})

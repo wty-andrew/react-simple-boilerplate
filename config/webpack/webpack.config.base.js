@@ -1,10 +1,4 @@
-const path = require('path')
-const webpack = require('webpack')
-
 module.exports = {
-  output: {
-    path: path.join(__dirname, '../../public'),
-  },
   module: {
     rules: [
       {
@@ -14,6 +8,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
   target: 'electron-renderer',
 }

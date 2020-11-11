@@ -1,5 +1,5 @@
 node_modules/
 *.log
-public/
 coverage/
+build/
 dist/
